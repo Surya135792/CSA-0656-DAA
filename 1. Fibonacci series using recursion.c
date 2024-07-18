@@ -17,4 +17,4 @@ int main() {
     int num_terms = 10; 
     print_fibonacci_series(num_terms);
     return 0;
-}![1  fibinocci c](https://github.com/user-attachments/assets/75fc840e-18d0-45bd-8177-2d7b53c05110)
+}
