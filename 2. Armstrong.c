@@ -35,6 +35,5 @@ int main() {
     } else {
         printf("%d is not an Armstrong number.\n", num);
     }
-
     return 0;
 }
