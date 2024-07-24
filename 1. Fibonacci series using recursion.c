@@ -1,20 +1,35 @@
 #include <stdio.h>
-int fibonacci(int n) {
-    if (n <= 0) return 0; 
-    if (n == 1) return 1;   
-    return fibonacci(n - 1) + fibonacci(n - 2);
-}
-void print_fibonacci_series(int n) {
-    printf("Fibonacci Series:\n");
-    for (int i = 0; i < n; ++i) {
-        printf("%d ", fibonacci(i));
+
+void printFibonacci(int n) {
+    int first = 0, second = 1, next, i;
+    if (n >= 1) {
+        printf("%d ", first);
+    }
+    if (n >= 2) {
+        printf("%d ", second);
+    }
+
+    for (i = 3; i <= n; i++) {
+        next = first + second;
+        printf("%d ", next);
+        first = second;
+        second = next;
     }
     printf("\n");
 }
+
 int main() {
-    printf("Name: A. Surya\n");
-    printf("Regno: 192211797\n");
-    int num_terms = 10; 
-    print_fibonacci_series(num_terms);
+    int terms;
+    printf("A. Surya 192211797\n");
+
+    printf("Enter the number of terms for Fibonacci series: ");
+    scanf("%d", &terms);
+    if (terms <= 0) {
+        printf("Number of terms must be a positive integer.\n");
+    } else {
+        printFibonacci(terms);
+    }
+
     return 0;
 }
+
