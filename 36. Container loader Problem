@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+#define MAX_CONTAINERS 100
+
+int main() {
+	printf("V.Laxmi Nivas-192211694\n");
+    int containers[MAX_CONTAINERS];
+    int n, capacity, maxLoad = 0;
+
+    printf("Enter the number of containers: ");
+    scanf("%d", &n);
+
+    printf("Enter the capacities of the containers: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &containers[i]);
+    }
+
+    printf("Enter the truck's capacity: ");
+    scanf("%d", &capacity);
+
+    int currentWeight = 0;
+    int index = 0;
+
+    while (1) {
+        if (index == n) {
+            maxLoad = (currentWeight > maxLoad) ? currentWeight : maxLoad;
+            if (index == 0) break;
+            index--;
+            currentWeight -= containers[index];
+        } else {
+            if (currentWeight + containers[index] <= capacity) {
+                currentWeight += containers[index];
+                index++;
+            } else {
+                index--;
+                if (index < 0) break;
+                currentWeight -= containers[index];
+            }
+        }
+    }
+
+    printf("Maximum load that can be loaded: %d\n", maxLoad);
+
+    return 0;
+}

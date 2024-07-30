@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <limits.h>
+#include <stdbool.h>
+
+#define N 4
+
+int costMatrix[N][N] = {
+    {9, 2, 7, 8},
+    {6, 4, 3, 7},
+    {5, 8, 1, 8},
+    {7, 6, 9, 4}
+};
+
+int min(int x, int y) {
+    return (x < y) ? x : y;
+}
+
+int calculateCost(int assigned[N], int costMatrix[N][N]) {
+    int cost = 0;
+    for (int i = 0; i < N; i++)
+        cost += costMatrix[i][assigned[i]];
+    return cost;
+}
+
+void copyArray(int src[N], int dest[N]) {
+    for (int i = 0; i < N; i++)
+        dest[i] = src[i];
+}
+
+void solveAssignmentProblem(int costMatrix[N][N]) {
+    int finalCost = INT_MAX;
+    int finalAssignment[N];
+    int assigned[N];
+    for (int i = 0; i < N; i++)
+        assigned[i] = -1;
+
+    bool visited[N] = {false};
+
+    int currentCost = 0;
+    for (int i = 0; i < N; i++) {
+        int minCost = INT_MAX;
+        int minIndex = -1;
+
+        for (int j = 0; j < N; j++) {
+            if (!visited[j] && costMatrix[i][j] < minCost) {
+                minCost = costMatrix[i][j];
+                minIndex = j;
+            }
+        }
+
+        visited[minIndex] = true;
+        assigned[i] = minIndex;
+        currentCost += minCost;
+    }
+
+    finalCost = min(finalCost, currentCost);
+    copyArray(assigned, finalAssignment);
+
+    printf("Minimum cost: %d\n", finalCost);
+    printf("Assignment:\n");
+    for (int i = 0; i < N; i++)
+        printf("Worker %d -> Job %d\n", i, finalAssignment[i]);
+}
+
+int main() {
+	printf("V.Laxmi Nivas-192211694\n");
+    solveAssignmentProblem(costMatrix);
+    return 0;
+}
