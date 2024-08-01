@@ -64,7 +64,7 @@ bool hamCycle(bool graph[V][V]) {
 }
 
 int main() {
-	printf("V.Laxmi Nivas-192211694\n");
+	printf("A. Surya 192211797\n");
     bool graph[V][V] = {
         {0, 1, 0, 1, 0},
         {1, 0, 1, 1, 1},
