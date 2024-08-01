@@ -29,3 +29,4 @@ int main() {
     printf("Maximum value in Knapsack = %d\n", knapsack(W, wt, val, n));
     return 0;
 }
+
