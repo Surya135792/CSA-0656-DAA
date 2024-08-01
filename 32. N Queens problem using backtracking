@@ -58,6 +58,7 @@ bool solveNQ() {
     return true;
 }
 
+
 int main() {
 	printf("V.Laxmi Nivas-192211694\n");
     solveNQ();
