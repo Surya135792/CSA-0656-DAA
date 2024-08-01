@@ -19,3 +19,4 @@ int main() {
     printPascal(n);
     return 0;
 }
+
